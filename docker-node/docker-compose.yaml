@@ -27,7 +27,7 @@ services:
       - ./gateway/logs:/massbit/massbitroute/app/src/sites/services/gateway/logs:rw
     environment:
       - MBR_ENV=shamu
-      - INSTALL_CMD=https://portal.massbitroute.net/api/v1/gateway_install?id=89f24596-8087-4406-87a4-aec47ff2b4d7&user_id=b363ddf4-42cf-4ccf-89c2-8c42c531ac99&blockchain=eth&network=mainnet&zone=EU&app_key=LFyHE_WaDS6HiQuE6QqKSA&portal_url=https://portal.massbitroute.net&env=keiko
+      - INSTALL_CMD=[VALUE]
     extra_hosts:
       - "hostmaster.massbitroute.dev:172.24.24.210"
       - "ns1.massbitroute.dev:172.24.24.210"
@@ -71,7 +71,7 @@ services:
       - ./node/logs:/massbit/massbitroute/app/src/sites/services/node/logs:rw
     environment:
       - MBR_ENV=shamu
-      - INSTALL_CMD=http://portal.massbitroute.net/api/v1/node_install?id=e65d8ef6-7538-400b-8640-e06e053de94b&user_id=c5324e68-b799-42a5-aea8-fcb993c6f1dd&blockchain=eth&network=mainnet&zone=AS&data_url=http://34.81.232.186:8545&app_key=9XcB18jGrr1U0YCHxCaGxA&portal_url=http://portal.massbitroute.net&env=keiko
+      - INSTALL_CMD=[VALUE]
     extra_hosts:
       - "hostmaster.massbitroute.dev:172.24.24.210"
       - "ns1.massbitroute.dev:172.24.24.210"
