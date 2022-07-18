@@ -1,0 +1,100 @@
+version: '3.8'
+networks:
+  mbr_test_network:
+    driver: bridge
+    external: true
+    # ipam:
+      # config:
+      #     - subnet: "172.24.24.0/16"
+services:
+  gateway:
+    privileged: true
+    networks:
+      mbr_test_network:
+        ipv4_address: "172.24.24.3"
+
+    restart: unless-stopped
+    image: massbit/massbitroute_gateway_dev:0.0.1-shamu-dev
+    command: "-n"
+    build:
+      context: /massbit/massbitroute/app/src/sites/services/gateway
+      dockerfile: install/mbr/build/gateway/Dockerfile.dev
+      args:
+        VERSION: 0.0.1-shamu-dev
+        BRANCH: shamu
+    container_name: mbr_gateway
+    volumes:
+      - ./gateway/logs:/massbit/massbitroute/app/src/sites/services/gateway/logs:rw
+    environment:
+      - MBR_ENV=shamu
+      - INSTALL_CMD=https://portal.massbitroute.net/api/v1/gateway_install?id=89f24596-8087-4406-87a4-aec47ff2b4d7&user_id=b363ddf4-42cf-4ccf-89c2-8c42c531ac99&blockchain=eth&network=mainnet&zone=EU&app_key=LFyHE_WaDS6HiQuE6QqKSA&portal_url=https://portal.massbitroute.net&env=keiko
+    extra_hosts:
+      - "hostmaster.massbitroute.dev:172.24.24.210"
+      - "ns1.massbitroute.dev:172.24.24.210"
+      - "ns2.massbitroute.dev:172.24.24.210"
+      - "api.massbitroute.dev:172.24.24.206"
+      - "git.massbitroute.dev:172.24.24.207"
+      - "stat.mbr.massbitroute.dev:172.24.24.208"
+      - "monitor.mbr.massbitroute.dev:172.24.24.209"
+      - "chain.massbitroute.dev:172.24.24.205"
+      - "portal.massbitroute.dev:172.24.24.201"
+      - "admin-api.massbitroute.dev:172.24.24.200"
+      - "dapi.massbitroute.dev:172.24.24.200"
+      - "scheduler.fisherman.massbitroute.dev:172.24.24.204"
+      - "gateway-dot-mainnet.monitor.mbr:172.24.24.209"
+      - "gateway-eth-mainnet.monitor.mbr:172.24.24.209"
+      - "node-eth-mainnet.monitor.mbr:172.24.24.209"
+      - "node-dot-mainnet.monitor.mbr:172.24.24.209"
+      - "node-eth-mainnet.stat.mbr:172.24.24.208"
+      - "node-dot-mainnet.stat.mbr:172.24.24.208"
+      - "gateway-eth-mainnet.stat.mbr:172.24.24.208"
+      - "gateway-dot-mainnet.stat.mbr:172.24.24.208"
+
+
+  node:
+    privileged: true
+    networks:
+      mbr_test_network:
+        ipv4_address: "172.24.24.4"
+    
+    restart: unless-stopped
+    image: massbit/massbitroute_node_dev:0.0.1-shamu-dev
+    command: "-n"
+    build:
+      context: /massbit/massbitroute/app/src/sites/services/node
+      dockerfile: install/mbr/build/node/Dockerfile.dev
+      args:
+        VERSION: 0.0.1-shamu-dev
+        BRANCH: shamu
+    container_name: mbr_node
+    volumes:
+      - ./node/logs:/massbit/massbitroute/app/src/sites/services/node/logs:rw
+    environment:
+      - MBR_ENV=shamu
+      - INSTALL_CMD=http://portal.massbitroute.net/api/v1/node_install?id=e65d8ef6-7538-400b-8640-e06e053de94b&user_id=c5324e68-b799-42a5-aea8-fcb993c6f1dd&blockchain=eth&network=mainnet&zone=AS&data_url=http://34.81.232.186:8545&app_key=9XcB18jGrr1U0YCHxCaGxA&portal_url=http://portal.massbitroute.net&env=keiko
+    extra_hosts:
+      - "hostmaster.massbitroute.dev:172.24.24.210"
+      - "ns1.massbitroute.dev:172.24.24.210"
+      - "ns2.massbitroute.dev:172.24.24.210"
+      - "api.massbitroute.dev:172.24.24.206"
+      - "git.massbitroute.dev:172.24.24.207"
+      - "stat.mbr.massbitroute.dev:172.24.24.208"
+      - "monitor.mbr.massbitroute.dev:172.24.24.209"
+      - "chain.massbitroute.dev:172.24.24.205"
+      - "portal.massbitroute.dev:172.24.24.201"
+      - "admin-api.massbitroute.dev:172.24.24.200"
+      - "dapi.massbitroute.dev:172.24.24.200"
+      - "scheduler.fisherman.massbitroute.dev:172.24.24.204"
+      - "gateway-dot-mainnet.monitor.mbr:172.24.24.209"
+      - "gateway-eth-mainnet.monitor.mbr:172.24.24.209"
+      - "node-eth-mainnet.monitor.mbr:172.24.24.209"
+      - "node-dot-mainnet.monitor.mbr:172.24.24.209"
+      - "node-eth-mainnet.stat.mbr:172.24.24.208"
+      - "node-dot-mainnet.stat.mbr:172.24.24.208"
+      - "gateway-eth-mainnet.stat.mbr:172.24.24.208"
+      - "gateway-dot-mainnet.stat.mbr:172.24.24.208"
+
+
+
+
+        #  docker network create -d bridge --gateway 172.24.24.1 --subnet 172.24.24.0/24   mbr_test_network
