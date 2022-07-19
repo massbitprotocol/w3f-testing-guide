@@ -7,24 +7,24 @@ networks:
       # config:
       #     - subnet: "172.24.24.0/16"
 services:
-  node:
+  gateway:
     privileged: true
     networks:
       mbr_test_network:
-        ipv4_address: "172.24.24.4"
-    
+        ipv4_address: "172.24.24.3"
+
     restart: unless-stopped
-    image: massbit/massbitroute_node_dev:0.0.1-shamu-dev
+    image: massbit/massbitroute_gateway_dev:0.0.1-shamu-dev
     command: "-n"
     build:
-      context: /massbit/massbitroute/app/src/sites/services/node
-      dockerfile: install/mbr/build/node/Dockerfile.dev
+      context: /massbit/massbitroute/app/src/sites/services/gateway
+      dockerfile: install/mbr/build/gateway/Dockerfile.dev
       args:
         VERSION: 0.0.1-shamu-dev
         BRANCH: shamu
-    container_name: mbr_node
+    container_name: mbr_gateway
     volumes:
-      - ./node/logs:/massbit/massbitroute/app/src/sites/services/node/logs:rw
+      - ./gateway/logs:/massbit/massbitroute/app/src/sites/services/gateway/logs:rw
     environment:
       - MBR_ENV=shamu
       - INSTALL_CMD=[VALUE]
@@ -49,8 +49,3 @@ services:
       - "node-dot-mainnet.stat.mbr:172.24.24.208"
       - "gateway-eth-mainnet.stat.mbr:172.24.24.208"
       - "gateway-dot-mainnet.stat.mbr:172.24.24.208"
-
-
-
-
-        #  docker network create -d bridge --gateway 172.24.24.1 --subnet 172.24.24.0/24   mbr_test_network
