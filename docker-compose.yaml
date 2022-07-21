@@ -8,6 +8,7 @@ networks:
       #     - subnet: "172.24.24.0/16"
 services:
   db:
+    container_name: mbr_db
     image: postgres:14.4-alpine
     restart: always
     networks:
@@ -49,6 +50,7 @@ services:
       - "api.ipapi.com:172.24.24.201"
 
   redis:
+    container_name: mbr_redis
     image: redis:7.0.2-alpine
     restart: always
     networks:
@@ -82,6 +84,7 @@ services:
       - "api.ipapi.com:172.24.24.201"
 
   mbr_portal_api:
+    container_name: mbr_portal_api
     image: massbit/massbitroute_portal:v0.1
     # build: .
     depends_on:
@@ -118,6 +121,7 @@ services:
       - MODE=api
 
   mbr_portal_worker:
+    container_name: mbr_portal_worker
     image: massbit/massbitroute_portal:v0.1
     # build: .
     depends_on:
@@ -154,6 +158,7 @@ services:
       - MODE=worker
 
   mbr_portal_admin:
+    container_name: mbr_portal_admin
     image: massbit/massbitroute_portal:v0.1
     # build: .
     depends_on:
@@ -190,6 +195,7 @@ services:
       - MODE=admin
 
   mbr_web:
+    container_name: mbr_web
     image: massbit/massbitroute_web:v0.1
     # build: ../mbr-app
     restart: always
@@ -225,6 +231,7 @@ services:
 
 
   fisherman_scheduler:
+    container_name: mbr_fisherman_scheduler
     image: massbit/massbitroute_fisherman:v0.1
     # build: ../massbitroute_fisherman
     restart: always
@@ -263,7 +270,7 @@ services:
       - RUST_LOG_TYPE=console
       - DATABASE_URL=postgres://postgres:postgres@db:5432/massbit-fisherman
       - DOMAIN=massbitroute.net
-      - PORTAL_AUTHORIZATION=g2xnS1uKr4Ko7tPApdceP4NSOKhhbWbX
+      - PORTAL_AUTHORIZATION=VERIFICATION_SERVICE_SECRET
       - URL_GATEWAYS_LIST=http://portal.massbitroute.net/mbr/gateway/list/verify
       - URL_NODES_LIST=http://portal.massbitroute.net/mbr/node/list/verify
       # - SCHEDULER_ENDPOINT=0.0.0.0:80
@@ -277,6 +284,7 @@ services:
       - BENCHMARK_WRK_PATH=benchmark
 
   massbitchain:
+    container_name: mbr_chain
     image: massbit/massbitroute_chain:v0.1
     # build: ../massbitchain
     restart: always

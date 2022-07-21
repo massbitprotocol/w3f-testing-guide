@@ -16,18 +16,18 @@ services:
     restart: unless-stopped
     image: massbit/massbitroute_node_dev:0.0.1-shamu-dev
     command: "-n"
-    build:
-      context: /massbit/massbitroute/app/src/sites/services/node
-      dockerfile: install/mbr/build/node/Dockerfile.dev
-      args:
-        VERSION: 0.0.1-shamu-dev
-        BRANCH: shamu
+    # build:
+    #   context: /massbit/massbitroute/app/src/sites/services/node
+    #   dockerfile: install/mbr/build/node/Dockerfile.dev
+    #   args:
+    #     VERSION: 0.0.1-shamu-dev
+    #     BRANCH: shamu
     container_name: mbr_node
     volumes:
       - ./node/logs:/massbit/massbitroute/app/src/sites/services/node/logs:rw
     environment:
       - MBR_ENV=shamu
-      - INSTALL_CMD=[VALUE]
+      - INSTALL_CMD=http://portal.massbitroute.net/api/v1/node_install?id=e65d8ef6-7538-400b-8640-e06e053de94b&user_id=c5324e68-b799-42a5-aea8-fcb993c6f1dd&blockchain=eth&network=mainnet&zone=AS&data_url=http://34.81.232.186:8545&app_key=9XcB18jGrr1U0YCHxCaGxA&portal_url=http://portal.massbitroute.net&env=keiko
     extra_hosts:
       - "hostmaster.massbitroute.dev:172.24.24.210"
       - "ns1.massbitroute.dev:172.24.24.210"
@@ -49,8 +49,4 @@ services:
       - "node-dot-mainnet.stat.mbr:172.24.24.208"
       - "gateway-eth-mainnet.stat.mbr:172.24.24.208"
       - "gateway-dot-mainnet.stat.mbr:172.24.24.208"
-
-
-
-
-        #  docker network create -d bridge --gateway 172.24.24.1 --subnet 172.24.24.0/24   mbr_test_network
+      - "ipv4.icanhazip.com:172.24.24.200"
