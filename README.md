@@ -46,6 +46,35 @@ eb9fc0d0d46d   postgres:14.4-alpine                               "docker-entryp
 172.24.24.205 chain.massbitroute.net
 ```
 
+* Make sure all services in `mbr_api` are running.
+
+```sh
+docker exec -it mbr_api bash
+cd /massbit/massbitroute/app/src/sites/services/api/
+
+./cmd_server status
+
+# If any of the services are not running, try to restart it
+./cmd_server restart nginx
+
+```
+
+* Make sure the database completes the schema migration 
+
+```sh
+docker exec -it mbr_portal_api bash
+npm run dbm:init
+```
+
+* Make sure the Fisherman service and its worker is running
+
+```sh
+docker exec -it mbr_fisherman_scheduler bash
+supervisorctl status
+# restart if a service is not running
+supervisorctl restart all
+```
+
 * Now that the Docker environment for Massbit Core components is up. We can access the Web portal through the URL http://dapi.massbitroute.net. Make sure you have a Polkadot extension wallet installed for your Chome or Brave browser to register an account with Massbit Route. Once you are registered with Massbit Route in Docker environment, the account ballance will be 1000 KEI token by default for staking.
 
 ### 2. Create docker environment for Massbit Node
