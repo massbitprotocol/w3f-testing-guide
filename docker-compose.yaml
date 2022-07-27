@@ -195,7 +195,7 @@ services:
     # build: ../mbr-app
     restart: always
     depends_on:
-      - "mbr_portal"
+      - "mbr_portal_api"
     networks:
       mbr_test_network:
         ipv4_address: "172.24.24.200"
