@@ -297,12 +297,12 @@ services:
     image: massbit/massbitroute_api_dev:0.0.1-shamu-dev
     # command: sed -i "s|export WHITELIST_PARTNERS=.*|export WHITELIST_PARTNERS=\"allow 172.24.24.201\"|g" /massbit/massbitroute/app/src/sites/services/api/env/api.env
     command: "-n"
-    build:
-      context: /massbit/massbitroute/app/src/sites/services/api
-      dockerfile: install/mbr/build/api/Dockerfile.dev
-      args:
-        VERSION: 0.0.1-shamu-dev
-        BRANCH: shamu     
+    # build:
+    #   context: /massbit/massbitroute/app/src/sites/services/api
+    #   dockerfile: install/mbr/build/api/Dockerfile.dev
+    #   args:
+    #     VERSION: 0.0.1-shamu-dev
+    #     BRANCH: shamu     
     container_name: mbr_api
     # network_mode: "host"
     # ports:
@@ -347,12 +347,12 @@ services:
     restart: unless-stopped
     image: massbit/massbitroute_git_dev:0.0.1-shamu-dev
     command: "-n"
-    build:
-      context: /massbit/massbitroute/app/src/sites/services/git
-      dockerfile: install/mbr/build/git/Dockerfile.dev
-      args:
-        VERSION: 0.0.1-shamu-dev
-        BRANCH: shamu  
+    # build:
+    #   context: /massbit/massbitroute/app/src/sites/services/git
+    #   dockerfile: install/mbr/build/git/Dockerfile.dev
+    #   args:
+    #     VERSION: 0.0.1-shamu-dev
+    #     BRANCH: shamu  
     container_name: mbr_git    
     volumes:
       - ./git/deploy:/massbit/massbitroute/app/src/sites/services/git/deploy:rw      
@@ -396,12 +396,12 @@ services:
     restart: unless-stopped
     image: massbit/massbitroute_gwman_dev:0.0.1-shamu-dev
     command: "-n"
-    build:
-      context: /massbit/massbitroute/app/src/sites/services/gwman
-      dockerfile: install/mbr/build/gwman/Dockerfile.dev 
-      args:
-        VERSION: 0.0.1-shamu-dev
-        BRANCH: shamu         
+    # build:
+    #   context: /massbit/massbitroute/app/src/sites/services/gwman
+    #   dockerfile: install/mbr/build/gwman/Dockerfile.dev 
+    #   args:
+    #     VERSION: 0.0.1-shamu-dev
+    #     BRANCH: shamu         
     container_name: mbr_gwman  
     volumes:
       - ./gwman/logs:/massbit/massbitroute/app/src/sites/services/gwman/logs:rw
@@ -442,12 +442,12 @@ services:
     restart: unless-stopped
     image: massbit/massbitroute_stat_dev:0.0.1-shamu-dev
     command: "-n"
-    build:
-      context: /massbit/massbitroute/app/src/sites/services/stat
-      dockerfile: install/mbr/build/stat/Dockerfile.dev
-      args:
-        VERSION: 0.0.1-shamu-dev
-        BRANCH: shamu      
+    # build:
+    #   context: /massbit/massbitroute/app/src/sites/services/stat
+    #   dockerfile: install/mbr/build/stat/Dockerfile.dev
+    #   args:
+    #     VERSION: 0.0.1-shamu-dev
+    #     BRANCH: shamu      
     container_name: mbr_stat    
     volumes:
       - ./stat/logs:/massbit/massbitroute/app/src/sites/services/stat/logs:rw
@@ -490,12 +490,12 @@ services:
     restart: unless-stopped
     image: massbit/massbitroute_monitor_dev:0.0.1-shamu-dev
     command: "-n"
-    build:
-      context: /massbit/massbitroute/app/src/sites/services/monitor
-      dockerfile: install/mbr/build/monitor/Dockerfile.dev  
-      args:
-        VERSION: 0.0.1-shamu-dev
-        BRANCH: shamu      
+    # build:
+    #   context: /massbit/massbitroute/app/src/sites/services/monitor
+    #   dockerfile: install/mbr/build/monitor/Dockerfile.dev  
+    #   args:
+    #     VERSION: 0.0.1-shamu-dev
+    #     BRANCH: shamu      
     container_name: mbr_monitor
     volumes:
       - ./monitor/logs:/massbit/massbitroute/app/src/sites/services/monitor/logs:rw
