@@ -287,8 +287,6 @@ services:
     networks:
       mbr_test_network:
         ipv4_address: "172.24.24.213"
-    ports:
-      - '80:80'
     extra_hosts:
       - "hostmaster.massbitroute.net:172.24.24.210"
       - "ns1.massbitroute.net:172.24.24.210"
