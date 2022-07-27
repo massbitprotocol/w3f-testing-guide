@@ -231,7 +231,7 @@ services:
     restart: always
     depends_on:
       - "db"
-      - "mbr_portal"
+      - "mbr_portal_api"
     networks:
       mbr_test_network:
         ipv4_address: "172.24.24.204"
