@@ -277,7 +277,7 @@ services:
       - BENCHMARK_WRK_PATH=benchmark
 
   fisherman_worker:
-    container_name: mbr_fisherman_scheduler
+    container_name: mbr_fisherman_worker
     image: massbit/massbitroute_fisherman:v0.1
     # build: ../massbitroute_fisherman
     restart: always
