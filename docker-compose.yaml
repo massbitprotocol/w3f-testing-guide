@@ -276,6 +276,58 @@ services:
       - WORKER_SERVICE_ENDPOINT=0.0.0.0:4040
       - BENCHMARK_WRK_PATH=benchmark
 
+  fisherman_worker:
+    container_name: mbr_fisherman_scheduler
+    image: massbit/massbitroute_fisherman:v0.1
+    # build: ../massbitroute_fisherman
+    restart: always
+    depends_on:
+      - "db"
+      - "mbr_portal_api"
+    networks:
+      mbr_test_network:
+        ipv4_address: "172.24.24.213"
+    ports:
+      - '80:80'
+    extra_hosts:
+      - "hostmaster.massbitroute.net:172.24.24.210"
+      - "ns1.massbitroute.net:172.24.24.210"
+      - "ns2.massbitroute.net:172.24.24.210"
+      - "api.massbitroute.net:172.24.24.206"
+      - "stat.mbr.massbitroute.net:172.24.24.208"
+      - "monitor.mbr.massbitroute.net:172.24.24.209"
+      - "chain.massbitroute.net:172.24.24.205"
+      - "portal.massbitroute.net:172.24.24.201"
+      - "admin-api.massbitroute.net:172.24.24.200"
+      - "dapi.massbitroute.net:172.24.24.200"
+      - "scheduler.fisherman.massbitroute.net:172.24.24.204"
+      - "gateway-dot-mainnet.monitor.mbr.massbitroute.net:172.24.24.209"
+      - "gateway-eth-mainnet.monitor.mbr.massbitroute.net:172.24.24.209"
+      - "node-eth-mainnet.monitor.mbr.massbitroute.net:172.24.24.209"
+      - "node-dot-mainnet.monitor.mbr.massbitroute.net:172.24.24.209"
+      - "node-eth-mainnet.stat.mbr.massbitroute.net:172.24.24.208"
+      - "node-dot-mainnet.stat.mbr.massbitroute.net:172.24.24.208"
+      - "gateway-eth-mainnet.stat.mbr.massbitroute.net:172.24.24.208"
+      - "gateway-dot-mainnet.stat.mbr.massbitroute.net:172.24.24.208"
+      - "api.ipapi.com:172.24.24.201"
+    environment:
+      - RUST_LOG=info
+      - RUST_LOG_TYPE=console
+      - DATABASE_URL=postgres://postgres:postgres@db:5432/massbit-fisherman
+      - DOMAIN=massbitroute.net
+      - PORTAL_AUTHORIZATION=VERIFICATION_SERVICE_SECRET
+      - URL_GATEWAYS_LIST=http://portal.massbitroute.net/mbr/gateway/list/verify
+      - URL_NODES_LIST=http://portal.massbitroute.net/mbr/node/list/verify
+      # - SCHEDULER_ENDPOINT=0.0.0.0:80
+      - ROOT=/massbit/massbitroute/app/src/sites/services/gateway/
+      - SCHEDULER_ENDPOINT=http://scheduler.fisherman.massbitroute.net
+      - WORKER_ID=32dsv34-dmcvml3
+      - WORKER_IP=172.24.24.204
+      - ZONE=AS
+      - WORKER_ENDPOINT=https://172.24.24.204/__worker
+      - WORKER_SERVICE_ENDPOINT=0.0.0.0:4040
+      - BENCHMARK_WRK_PATH=benchmark
+
   massbitchain:
     container_name: mbr_chain
     image: massbit/massbitroute_chain:v0.1
