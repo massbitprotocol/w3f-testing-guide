@@ -4,7 +4,7 @@
 
 ### 1. Create Docker environment for core components
 
-* Run the following command to create a docket network for Massbit Route Components
+* Run the following command to create a docker network for Massbit Route Components
 
 
 ```sh
@@ -66,7 +66,7 @@ docker exec -it mbr_portal_api bash
 npm run dbm:init
 ```
 
-* Make sure the Fisherman service and its worker is running
+* Make sure the Fisherman service and its worker are running
 
 ```sh
 docker exec -it mbr_fisherman_scheduler bash
@@ -75,7 +75,7 @@ supervisorctl status
 supervisorctl restart all
 ```
 
-* Now that the Docker environment for Massbit Core components is up. We can access the Web portal through the URL http://dapi.massbitroute.net. Make sure you have a Polkadot extension wallet installed for your Chome or Brave browser to register an account with Massbit Route. Once you are registered with Massbit Route in Docker environment, the account ballance will be 1000 KEI token by default for staking.
+* Now that the Docker environment for Massbit Core components is up, we can access the Web portal through the URL http://dapi.massbitroute.net. Make sure you have a Polkadot extension wallet installed for your Chome or Brave browser to register an account with Massbit Route. Once you are registered with Massbit Route in Docker environment, the account ballance will be 1000 KEI token by default for staking.
 
 ### 2. Create docker environment for Massbit Node
 
