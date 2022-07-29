@@ -21,8 +21,6 @@ services:
       - APP_DB_PASS=postgres
       - APP_DB_NAME=massbit-user
       - FISHERMAN_DB_NAME=massbit-fisherman
-    ports:
-      - '5432:5432'
     volumes:
       # - db-data:/var/lib/postgresql/data
       - ./migrations:/docker-entrypoint-initdb.d
@@ -55,8 +53,6 @@ services:
     networks:
       mbr_test_network:
         ipv4_address: "172.24.24.202"
-    ports:
-      - '6379:6379'
     volumes:
       - redis-data:/data
     extra_hosts:
@@ -91,8 +87,6 @@ services:
     networks:
       mbr_test_network:
         ipv4_address: "172.24.24.201"
-    ports:
-      - '3001:3001'
     extra_hosts:
       - "hostmaster.massbitroute.net:172.24.24.210"
       - "ns1.massbitroute.net:172.24.24.210"
@@ -127,8 +121,6 @@ services:
     networks:
       mbr_test_network:
         ipv4_address: "172.24.24.211"
-    ports:
-      - '30001:30001'
     extra_hosts:
       - "hostmaster.massbitroute.net:172.24.24.210"
       - "ns1.massbitroute.net:172.24.24.210"
@@ -163,8 +155,6 @@ services:
     networks:
       mbr_test_network:
         ipv4_address: "172.24.24.212"
-    ports:
-      - '3006:3006'
     extra_hosts:
       - "hostmaster.massbitroute.net:172.24.24.210"
       - "ns1.massbitroute.net:172.24.24.210"
@@ -199,8 +189,6 @@ services:
     networks:
       mbr_test_network:
         ipv4_address: "172.24.24.200"
-    ports:
-      - '3000:3000'
     extra_hosts:
       - "hostmaster.massbitroute.net:172.24.24.210"
       - "ns1.massbitroute.net:172.24.24.210"
@@ -235,8 +223,6 @@ services:
     networks:
       mbr_test_network:
         ipv4_address: "172.24.24.204"
-    ports:
-      - '80:80'
     extra_hosts:
       - "hostmaster.massbitroute.net:172.24.24.210"
       - "ns1.massbitroute.net:172.24.24.210"
@@ -284,8 +270,6 @@ services:
     networks:
       mbr_test_network:
         ipv4_address: "172.24.24.205"
-    ports:
-        - '9944:9944'
 
   api:
     privileged: true
