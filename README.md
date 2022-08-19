@@ -1,5 +1,19 @@
 # Massbit Route testing guide
 
+```sh
+cd 163/
+bash runtime_start.sh
+
+apt install nginx -y
+cp public_proxy.conf /etc/nginx/sites-enabled
+service nginx restart
+
+vim node-docker-compose.yaml
+docker-compose -f node-docker-compose.yaml up -d
+vim gateway-docker-compose.yaml
+docker-compose -f gateway-docker-compose.yaml up -d
+```
+
 ## Docker environment
 
 ### 1. Create Docker environment for core components
