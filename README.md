@@ -1,6 +1,8 @@
 # Massbit Route testing guide
 
 ```sh
+HTST disable `chrome://net-internals/#hsts` dapi.massbitroute.net
+
 cd 163/
 bash runtime_start.sh
 
