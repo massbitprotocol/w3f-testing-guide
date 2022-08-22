@@ -252,5 +252,6 @@ cargo test
 git clone https://github.com/massbitprotocol/massbitroute_fisherman.git
 cd massbitroute_fisherman
 cargo install cargo-tarpaulin
+sudo apt-get install libpq-dev
 cargo tarpaulin -v
 ```
