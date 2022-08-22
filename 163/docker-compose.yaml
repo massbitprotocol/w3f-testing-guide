@@ -547,11 +547,13 @@ services:
       - ./api/vars:/massbit/massbitroute/app/src/sites/services/api/vars:rw
       # - ./api/tmp:/massbit/massbitroute/app/src/sites/services/api/tmp:rw
       - ./api/db:/massbit/massbitroute/app/src/sites/services/api/db:rw
+      - ./run_unit_test.sh:/massbit/run_unit_test.sh
     environment:
       - MBR_ENV=v0.1.7
       - MKAGENT_BRANCH=shamu
       - GIT_PRIVATE_BRANCH=shamu
-      - GIT_PRIVATE_READ_URL=http://massbit:e2pf6owbuzJY5xq3pblPV0anD0IbDuAw@git.massbitroute.net
+      - GIT_PRIVATE_READ_URL=http://massbit:e2pf6owbuzJY5xq3pblPV0anD0IbDuAw@git.massbitroute.net
+
     extra_hosts:
       - "hostmaster.massbitroute.net:172.24.163.254"
       - "ns1.massbitroute.net:172.24.163.254"
@@ -603,7 +605,8 @@ services:
       - ENV_BRANCH=shamu
       - SSL_BRANCH=shamu
       - GWMANDEPLOY_BRANCH=shamu
-      - GIT_PRIVATE_READ_URL=http://massbit:e2pf6owbuzJY5xq3pblPV0anD0IbDuAw@git.massbitroute.net
+      - GIT_PRIVATE_READ_URL=http://massbit:e2pf6owbuzJY5xq3pblPV0anD0IbDuAw@git.massbitroute.net
+
     extra_hosts:
       - "hostmaster.massbitroute.net:172.24.163.254"
       - "ns1.massbitroute.net:172.24.163.254"
@@ -654,7 +657,8 @@ services:
       - STAT_BLOCKCHAIN=mainnet
       - MBR_ENV=v0.1.0
       - PORTAL_URL=http://portal.massbitroute.net
-      - GIT_PRIVATE_READ_URL=http://massbit:e2pf6owbuzJY5xq3pblPV0anD0IbDuAw@git.massbitroute.net
+      - GIT_PRIVATE_READ_URL=http://massbit:e2pf6owbuzJY5xq3pblPV0anD0IbDuAw@git.massbitroute.net
+
     extra_hosts:
       - "hostmaster.massbitroute.net:172.24.163.254"
       - "ns1.massbitroute.net:172.24.163.254"
@@ -705,7 +709,8 @@ services:
       - MONITOR_NETWORKS=eth
       - MONITOR_BLOCKCHAINS=mainnet
       - MBR_ENV=v0.1.0
-      - GIT_PRIVATE_READ_URL=http://massbit:e2pf6owbuzJY5xq3pblPV0anD0IbDuAw@git.massbitroute.net
+      - GIT_PRIVATE_READ_URL=http://massbit:e2pf6owbuzJY5xq3pblPV0anD0IbDuAw@git.massbitroute.net
+
     extra_hosts:
       - "hostmaster.massbitroute.net:172.24.163.254"
       - "ns1.massbitroute.net:172.24.163.254"
