@@ -248,10 +248,12 @@ server {
 ### Massbit Core API
 
 ```sh
-git clone https://github.com/massbitprotocol/massbitroute.git -b shamu
-cd massbitroute
 ./scripts/run _install_test
 ./scripts/run _run_test
+
+./scripts/run _run_test t/api/api <- test api
+./scripts/run _run_test t/api/node <- test node
+./scripts/run _run_test t/api/gateway <- test gateway
 ```
 
 ### Massbit Chain
