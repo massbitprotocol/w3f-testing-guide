@@ -1,0 +1,54 @@
+version: '3.8'
+networks:
+  mbr_test_network_43:
+    driver: bridge
+    external: true
+    # ipam:
+      # config:
+      #     - subnet: "172.24.43.0/16"
+services:
+  "node_43_[[BLOCKCHAIN]]_[[NETWORK]]_[[DOCKER_ID]]":
+    privileged: true
+    networks:
+      mbr_test_network_43:
+
+    restart: unless-stopped
+    image: massbit/massbitroute_node:v0.1.8
+    command: "-n"
+    # build:
+    #   context: /massbit/massbitroute/app/src/sites/services/node
+    #   dockerfile: install/mbr/build/node/Dockerfile.dev
+    #   args:
+    #     VERSION: 0.0.1-shamu-dev
+    #     BRANCH: shamu
+    container_name: mbr_node_43_[[BLOCKCHAIN]]_[[NETWORK]]_[[DOCKER_ID]]
+    volumes:
+      - ./node/[[DOCKER_ID]]/logs:/massbit/massbitroute/app/src/sites/services/node/logs:rw
+    environment:
+      - MBR_ENV=v0.1.8
+      - DOMAIN=massbitroute.net
+      - PORTAL_URL=http://portal.massbitroute.net
+      - INSTALL_CMD=http://portal.massbitroute.net/api/v1/node_install?id=[[NODE_ID]]&user_id=[[USER_ID]]&blockchain=[[BLOCKCHAIN]]&network=[[NETWORK]]&zone=[[ZONE]]&data_url=[[DATA_URL]]&app_key=[[APP_KEY]]&portal_url=http://portal.massbitroute.net&env=shamu
+    extra_hosts:
+      - "hostmaster.massbitroute.net:172.24.43.254"
+      - "ns1.massbitroute.net:172.24.43.254"
+      - "ns2.massbitroute.net:172.24.43.254"
+      - "api.massbitroute.net:172.24.43.254"
+      - "stat.mbr.massbitroute.net:172.24.43.254"
+      - "monitor.mbr.massbitroute.net:172.24.43.254"
+      - "chain.massbitroute.net:172.24.43.20"
+      - "portal.massbitroute.net:172.24.43.254"
+      - "admin-api.massbitroute.net:172.24.43.254"
+      - "dapi.massbitroute.net:172.24.43.254"
+      - "scheduler.fisherman.massbitroute.net:172.24.43.254"
+      - "gateway-dot-mainnet.monitor.mbr.massbitroute.net:172.24.43.254"
+      - "gateway-eth-mainnet.monitor.mbr.massbitroute.net:172.24.43.254"
+      - "node-eth-mainnet.monitor.mbr.massbitroute.net:172.24.43.254"
+      - "node-dot-mainnet.monitor.mbr.massbitroute.net:172.24.43.254"
+      - "node-eth-mainnet.stat.mbr.massbitroute.net:172.24.43.254"
+      - "node-dot-mainnet.stat.mbr.massbitroute.net:172.24.43.254"
+      - "gateway-eth-mainnet.stat.mbr.massbitroute.net:172.24.43.254"
+      - "gateway-dot-mainnet.stat.mbr.massbitroute.net:172.24.43.254"
+      - "api.ipapi.com:172.24.43.254"
+      - "staking.massbitroute.net:172.24.43.254"
+      - "ipv4.icanhazip.com:172.24.43.254"

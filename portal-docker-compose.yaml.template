@@ -1,0 +1,223 @@
+version: '3.8'
+services:
+  mbr_portal_api_43:
+    container_name: mbr_portal_api_43
+    image: massbit/massbitroute_portal:w3f-milestone-2
+    # build: .
+    depends_on:
+      - "db_43"
+      - "redis_43"
+    networks:
+      mbr_test_network_43:
+        ipv4_address: "172.24.43.10"
+    #ports:
+    #  - '3001:3001'
+    extra_hosts:
+      - "hostmaster.massbitroute.net:172.24.43.254"
+      - "ns1.massbitroute.net:172.24.43.254"
+      - "ns2.massbitroute.net:172.24.43.254"
+      - "api.massbitroute.net:172.24.43.254"
+      - "stat.mbr.massbitroute.net:172.24.43.254"
+      - "monitor.mbr.massbitroute.net:172.24.43.254"
+      - "chain.massbitroute.net:172.24.43.254"
+      - "portal.massbitroute.net:172.24.43.254"
+      - "admin-api.massbitroute.net:172.24.43.254"
+      - "dapi.massbitroute.net:172.24.43.254"
+      - "scheduler.fisherman.massbitroute.net:172.24.43.254"
+      - "gateway-dot-mainnet.monitor.mbr.massbitroute.net:172.24.43.254"
+      - "gateway-eth-mainnet.monitor.mbr.massbitroute.net:172.24.43.254"
+      - "node-eth-mainnet.monitor.mbr.massbitroute.net:172.24.43.254"
+      - "node-dot-mainnet.monitor.mbr.massbitroute.net:172.24.43.254"
+      - "node-eth-mainnet.stat.mbr.massbitroute.net:172.24.43.254"
+      - "node-dot-mainnet.stat.mbr.massbitroute.net:172.24.43.254"
+      - "gateway-eth-mainnet.stat.mbr.massbitroute.net:172.24.43.254"
+      - "gateway-dot-mainnet.stat.mbr.massbitroute.net:172.24.43.254"
+      - "api.ipapi.com:172.24.43.254"
+      - "staking.massbitroute.net:172.24.43.254"
+      - "git.massbitroute.net:172.24.43.5"
+    environment:
+      - MODE=api
+      - GEO_SERVICE_API_URL=http://api.ipapi.com/api
+      - GEO_SERVICE_SECRET=GEO_SERVICE_SECRET
+      - MASSBIT_ROUTE_SID=403716b0f58a7d6ddec769f8ca6008f2c1c0cea6
+      - MASSBIT_ROUTE_PARTNER_ID=fc78b64c5c33f3f270700b0c4d3e7998188035ab
+      - DB_HOST=db_43
+      - REDIS_HOST=redis_43
+      - MASSBIT_ROUTE_API_URL=http://api.massbitroute.net/_internal_api/v2
+      - MASSBIT_CHAIN_URL=ws://chain.massbitroute.net:9944
+      - VERIFICATION_SERVICE_DOMAIN=http://scheduler.fisherman.massbitroute.net/provider/verify
+      - SCHEDULER_URL=http://scheduler.fisherman.massbitroute.net/provider/verify
+      - VERIFICATION_SERVICE_SECRET=VERIFICATION_SERVICE_SECRET
+      - WHITELIST_DOMAIN=http://localhost:8080|http://localhost:3000|https://dapi.massbitroute.net|https://mbr-app-git-dev-massbit-team.vercel.app|https://route-staging.massbit.io|http://dapi.massbitroute.net
+
+  mbr_staking_43:
+    container_name: mbr_staking_43
+    image: massbit/massbitroute_staking:v0.1-dev
+    # build: .
+    depends_on:
+      - "massbitchain_43"
+    networks:
+      mbr_test_network_43:
+        ipv4_address: "172.24.43.12"
+    extra_hosts:
+      - "hostmaster.massbitroute.net:172.24.43.254"
+      - "ns1.massbitroute.net:172.24.43.254"
+      - "ns2.massbitroute.net:172.24.43.254"
+      - "api.massbitroute.net:172.24.43.254"
+      - "stat.mbr.massbitroute.net:172.24.43.254"
+      - "monitor.mbr.massbitroute.net:172.24.43.254"
+      - "chain.massbitroute.net:172.24.43.254"
+      - "portal.massbitroute.net:172.24.43.254"
+      - "admin-api.massbitroute.net:172.24.43.254"
+      - "dapi.massbitroute.net:172.24.43.254"
+      - "scheduler.fisherman.massbitroute.net:172.24.43.254"
+      - "api.ipapi.com:172.24.43.254"
+      - "staking.massbitroute.net:172.24.43.254"
+      - "git.massbitroute.net:172.24.43.5"
+    environment:
+      - MODE=api
+
+  mbr_portal_worker_43:
+    container_name: mbr_portal_worker_43
+    image: massbit/massbitroute_portal:w3f-milestone-2
+    # build: .
+    depends_on:
+      - "db_43"
+      - "redis_43"
+    networks:
+      mbr_test_network_43:
+        ipv4_address: "172.24.43.211"
+    extra_hosts:
+      - "hostmaster.massbitroute.net:172.24.43.254"
+      - "ns1.massbitroute.net:172.24.43.254"
+      - "ns2.massbitroute.net:172.24.43.254"
+      - "api.massbitroute.net:172.24.43.254"
+      - "stat.mbr.massbitroute.net:172.24.43.254"
+      - "monitor.mbr.massbitroute.net:172.24.43.254"
+      - "chain.massbitroute.net:172.24.43.20"
+      - "portal.massbitroute.net:172.24.43.254"
+      - "admin-api.massbitroute.net:172.24.43.254"
+      - "dapi.massbitroute.net:172.24.43.254"
+      - "scheduler.fisherman.massbitroute.net:172.24.43.254"
+      - "gateway-dot-mainnet.monitor.mbr.massbitroute.net:172.24.43.254"
+      - "gateway-eth-mainnet.monitor.mbr.massbitroute.net:172.24.43.254"
+      - "node-eth-mainnet.monitor.mbr.massbitroute.net:172.24.43.254"
+      - "node-dot-mainnet.monitor.mbr.massbitroute.net:172.24.43.254"
+      - "node-eth-mainnet.stat.mbr.massbitroute.net:172.24.43.254"
+      - "node-dot-mainnet.stat.mbr.massbitroute.net:172.24.43.254"
+      - "gateway-eth-mainnet.stat.mbr.massbitroute.net:172.24.43.254"
+      - "gateway-dot-mainnet.stat.mbr.massbitroute.net:172.24.43.254"
+      - "api.ipapi.com:172.24.43.254"
+      - "staking.massbitroute.net:172.24.43.254"
+      - "git.massbitroute.net:172.24.43.5"
+    environment:
+      - MODE=worker
+      - GEO_SERVICE_API_URL=http://api.ipapi.com/api
+      - GEO_SERVICE_SECRET=GEO_SERVICE_SECRET
+      - MASSBIT_ROUTE_SID=403716b0f58a7d6ddec769f8ca6008f2c1c0cea6
+      - MASSBIT_ROUTE_PARTNER_ID=fc78b64c5c33f3f270700b0c4d3e7998188035ab
+      - DB_HOST=db_43
+      - REDIS_HOST=redis_43
+      - MASSBIT_ROUTE_API_URL=http://api.massbitroute.net/_internal_api/v2
+      - MASSBIT_CHAIN_URL=ws://chain.massbitroute.net:9944
+      - VERIFICATION_SERVICE_DOMAIN=http://scheduler.fisherman.massbitroute.net/provider/verify
+      - VERIFICATION_SERVICE_SECRET=VERIFICATION_SERVICE_SECRET
+      - WHITELIST_DOMAIN=http://localhost:8080|http://localhost:3000|https://dapi.massbitroute.net|https://mbr-app-git-dev-massbit-team.vercel.app|https://route-staging.massbit.io|http://dapi.massbitroute.net
+
+
+  mbr_portal_admin_43:
+    container_name: mbr_portal_admin_43
+    image: massbit/massbitroute_portal:w3f-milestone-2
+    # build: .
+    depends_on:
+      - "db_43"
+      - "redis_43"
+      - "api_43"
+    networks:
+      mbr_test_network_43:
+        ipv4_address: "172.24.43.212"
+    #ports:
+    #  - '3006:3006'
+    extra_hosts:
+    - "hostmaster.massbitroute.net:172.24.43.254"
+    - "ns1.massbitroute.net:172.24.43.254"
+    - "ns2.massbitroute.net:172.24.43.254"
+    - "api.massbitroute.net:172.24.43.254"
+    - "stat.mbr.massbitroute.net:172.24.43.254"
+    - "monitor.mbr.massbitroute.net:172.24.43.254"
+    - "chain.massbitroute.net:172.24.43.20"
+    - "portal.massbitroute.net:172.24.43.254"
+    - "admin-api.massbitroute.net:172.24.43.254"
+    - "dapi.massbitroute.net:172.24.43.254"
+    - "scheduler.fisherman.massbitroute.net:172.24.43.254"
+    - "gateway-dot-mainnet.monitor.mbr.massbitroute.net:172.24.43.254"
+    - "gateway-eth-mainnet.monitor.mbr.massbitroute.net:172.24.43.254"
+    - "node-eth-mainnet.monitor.mbr.massbitroute.net:172.24.43.254"
+    - "node-dot-mainnet.monitor.mbr.massbitroute.net:172.24.43.254"
+    - "node-eth-mainnet.stat.mbr.massbitroute.net:172.24.43.254"
+    - "node-dot-mainnet.stat.mbr.massbitroute.net:172.24.43.254"
+    - "gateway-eth-mainnet.stat.mbr.massbitroute.net:172.24.43.254"
+    - "gateway-dot-mainnet.stat.mbr.massbitroute.net:172.24.43.254"
+    - "api.ipapi.com:172.24.43.254"
+    - "staking.massbitroute.net:172.24.43.254"
+    - "git.massbitroute.net:172.24.43.5"
+    environment:
+      - MODE=admin
+      - GEO_SERVICE_API_URL=http://api.ipapi.com/api
+      - GEO_SERVICE_SECRET=GEO_SERVICE_SECRET
+      - MASSBIT_ROUTE_SID=403716b0f58a7d6ddec769f8ca6008f2c1c0cea6
+      - MASSBIT_ROUTE_PARTNER_ID=fc78b64c5c33f3f270700b0c4d3e7998188035ab
+      - DB_HOST=db_43
+      - REDIS_HOST=redis_43
+      - MASSBIT_ROUTE_API_URL=http://api.massbitroute.net/_internal_api/v2
+      - MASSBIT_CHAIN_URL=ws://chain.massbitroute.net:9944
+      - VERIFICATION_SERVICE_DOMAIN=http://scheduler.fisherman.massbitroute.net/provider/verify
+      - VERIFICATION_SERVICE_SECRET=VERIFICATION_SERVICE_SECRET
+      - WHITELIST_DOMAIN=http://localhost:8080|http://localhost:3000|https://dapi.massbitroute.net|https://mbr-app-git-dev-massbit-team.vercel.app|https://route-staging.massbit.io|http://dapi.massbitroute.net
+
+
+  mbr_web_43:
+    container_name: mbr_web_43
+    image: massbit/massbitroute_web:w3f-milestone-2
+    # build: ../mbr-app
+    restart: always
+    depends_on:
+      - "mbr_portal_api_43"
+    networks:
+      mbr_test_network_43:
+        ipv4_address: "172.24.43.11"
+    #ports:
+    #  - '3000:3000'
+    extra_hosts:
+      - "hostmaster.massbitroute.net:172.24.43.254"
+      - "ns1.massbitroute.net:172.24.43.254"
+      - "ns2.massbitroute.net:172.24.43.254"
+      - "api.massbitroute.net:172.24.43.254"
+      - "stat.mbr.massbitroute.net:172.24.43.254"
+      - "monitor.mbr.massbitroute.net:172.24.43.254"
+      - "chain.massbitroute.net:172.24.43.20"
+      - "portal.massbitroute.net:172.24.43.254"
+      - "admin-api.massbitroute.net:172.24.43.254"
+      - "dapi.massbitroute.net:172.24.43.254"
+      - "scheduler.fisherman.massbitroute.net:172.24.43.254"
+      - "gateway-dot-mainnet.monitor.mbr.massbitroute.net:172.24.43.254"
+      - "gateway-eth-mainnet.monitor.mbr.massbitroute.net:172.24.43.254"
+      - "node-eth-mainnet.monitor.mbr.massbitroute.net:172.24.43.254"
+      - "node-dot-mainnet.monitor.mbr.massbitroute.net:172.24.43.254"
+      - "node-eth-mainnet.stat.mbr.massbitroute.net:172.24.43.254"
+      - "node-dot-mainnet.stat.mbr.massbitroute.net:172.24.43.254"
+      - "gateway-eth-mainnet.stat.mbr.massbitroute.net:172.24.43.254"
+      - "gateway-dot-mainnet.stat.mbr.massbitroute.net:172.24.43.254"
+      - "api.ipapi.com:172.24.43.254"
+      - "staking.massbitroute.net:172.24.43.254"
+      - "git.massbitroute.net:172.24.43.5"
+    environment:
+      - API_USER_URL=https://portal.massbitroute.net/
+      - API_PORTAL_URL=https://portal.massbitroute.net/
+
+      - ENVIRONMENT=shamu
+      - STAT_URL=http://stat.mbr.massbitroute.net
+      - GATEWAY_INSTALL_URL=http://portal.massbitroute.net/api/v1/gateway_install
+      - NODE_INSTALL_URL=http://portal.massbitroute.net/api/v1/node_install
+      - DAPI_PROVIDER_DOMAIN=massbitroute.net
+      - MASSBIT_CHAIN=ws://chain.massbitroute.net:9944

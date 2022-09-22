@@ -1,0 +1,15 @@
+**/log
+**/logs
+**/**/log
+
+git/
+api/
+node/
+gateway/
+stat/
+gwman/
+session/
+monitor/
+
+proxy/vars
+proxy/report
