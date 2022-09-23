@@ -7,7 +7,7 @@ networks:
       # config:
       #     - subnet: "172.24.43.0/16"
 services:
-  "node_43_eth_mainnet_grant-m2":
+  "node_43_eth_mainnet_943e4":
     privileged: true
     networks:
       mbr_test_network_43:
@@ -21,14 +21,14 @@ services:
     #   args:
     #     VERSION: 0.0.1-shamu-dev
     #     BRANCH: shamu
-    container_name: node_43_eth_mainnet_grant-m2
+    container_name: mbr_node_43_eth_mainnet_943e4
     volumes:
-      - ./node/grant-m2/logs:/massbit/massbitroute/app/src/sites/services/node/logs:rw
+      - ./node/943e4/logs:/massbit/massbitroute/app/src/sites/services/node/logs:rw
     environment:
       - MBR_ENV=v0.1.8
       - DOMAIN=massbitroute.net
       - PORTAL_URL=http://portal.massbitroute.net
-      - INSTALL_CMD=http://portal.massbitroute.net/api/v1/node_install?id=e57f14cb-3f6e-4ce6-a2cb-f7c7f9cb17c4&user_id=57ce13c3-6683-4dcd-ab8b-eaac7943eb99&blockchain=eth&network=mainnet&zone=AS&data_url=http://34.81.232.186:8545&app_key=7DB9XwukErFp_rj9fwAZ9Q&portal_url=http://portal.massbitroute.net&env=keiko
+      - INSTALL_CMD=http://portal.massbitroute.net/api/v1/node_install?id=958159bc-6cd8-4552-ad90-8418c2f42aca&user_id=b1cf032d-5971-410a-90fe-9c454a4173f0&blockchain=eth&network=mainnet&zone=AS&data_url=http://34.81.232.186:8545&app_key=XTGfKBy5vY5bLnb7ZpKp1w&portal_url=http://portal.massbitroute.net&env=shamu
     extra_hosts:
       - "hostmaster.massbitroute.net:172.24.43.254"
       - "ns1.massbitroute.net:172.24.43.254"
