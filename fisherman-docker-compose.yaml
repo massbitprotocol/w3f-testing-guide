@@ -159,7 +159,7 @@ services:
       - URL_PORTAL_PROJECTS=http://portal.massbitroute.net/mbr/d-apis/project/list/verify
       - URL_CHAIN=ws://chain.massbitroute.net:9944
       - ZONE=AS
-      - SIGNER_PHRASE=bottom drive obey lake curtain smoke basket hold race lonely fit walk//Dave
+      - SIGNER_PHRASE=bottom drive obey lake curtain smoke basket hold race lonely fit walk//Charlie
 
     extra_hosts:
       - "hostmaster.massbitroute.net:172.24.43.254"

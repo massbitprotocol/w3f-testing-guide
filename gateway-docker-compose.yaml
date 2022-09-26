@@ -29,7 +29,7 @@ services:
       - DOMAIN=massbitroute.net
       - SESSION_ENABLE=true
       - PORTAL_URL=http://portal.massbitroute.net
-      - INSTALL_CMD=http://portal.massbitroute.net/api/v1/gateway_install?id=58c9e4ff-ee11-40d5-831c-8129af93df4c&user_id=57ce13c3-6683-4dcd-ab8b-eaac7943eb99&blockchain=eth&network=mainnet&zone=AS&app_key=j-CxSjbCuC3iTD1IvFI9hg&portal_url=http://portal.massbitroute.net&env=keiko
+      - INSTALL_CMD=http://portal.massbitroute.net/api/v1/gateway_install?id=7033d3c9-d9ab-4be2-a8ae-f6991520c3b8&user_id=f0ae8444-a6c8-4f40-b944-eff83d923efe&blockchain=eth&network=mainnet&zone=AS&app_key=f3PW8TNwhYOUQpn1Hf984w&portal_url=http://portal.massbitroute.net&env=keiko
 
     extra_hosts:
       - "hostmaster.massbitroute.net:172.24.43.254"

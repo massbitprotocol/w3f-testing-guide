@@ -14,5 +14,9 @@ echo "export PARTNER_ID=$MASSBIT_ROUTE_PARTNER_ID" >> git/data/env/api.env
 
 PRIVATE_GIT_READ=$(docker exec mbr_git_$network_number cat /massbit/massbitroute/app/src/sites/services/git/data/env/git.env  | grep GIT_PRIVATE_READ_URL  | cut -d "=" -f 2 | sed "s/'//g")
 echo $PRIVATE_GIT_READ
-cat docker-compose.yaml.template | sed "s|\[\[PRIVATE_GIT_READ\]\]|$PRIVATE_GIT_READ|g" > docker-compose.yaml
-docker-compose up -d
+cat core-docker-compose.yaml.template | sed "s|\[\[PRIVATE_GIT_READ\]\]|$PRIVATE_GIT_READ|g" > core-docker-compose.yaml
+docker-compose -f network-docker-compose.yaml -f core-docker-compose.yaml -f fisherman-docker-compose.yaml -f portal-docker-compose.yaml up -d
+
+sleep 10
+
+docker restart mbr_portal_api_43
