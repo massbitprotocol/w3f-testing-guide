@@ -1,10 +1,10 @@
-### 1. Spin up core environement
+#### 1. Spin up core environement
 
 ```sh
 bash start_env.sh
 ```
 
-### 2. Append to user's pc/laptop host file `/etc/hosts`
+#### 2. Append to user's pc/laptop host file `/etc/hosts`
 
 ```
 [Public IP of docker host] portal.massbitroute.net
@@ -14,7 +14,7 @@ bash start_env.sh
 
 ```
 
-### . Spin up docker for Massbit node/gw
+#### . Spin up docker for Massbit node/gw
 ```
 docker-compose -f network-docker-compose.yaml -f node-docker-compose.yaml up -d 
 docker-compose -f network-docker-compose.yaml -f node-2-docker-compose.yaml up -d 
@@ -23,19 +23,19 @@ docker-compose -f network-docker-compose.yaml -f gateway-docker-compose.yaml up 
 docker-compose -f network-docker-compose.yaml -f gateway-2-docker-compose.yaml up -d 
 ```
 
-### . Create SSH tunnel to connect to PolkadotJS dashboard to Massbit Chain docker
+#### . Create SSH tunnel to connect to PolkadotJS dashboard to Massbit Chain docker
 
 ```sh
 ssh -L"9944:172.24.43.20:9944" [SERVER IP]
 ```
 
-### On user computer, access Polkadot JS dashboard to view chain events 
+#### On user computer, access Polkadot JS dashboard to view chain events 
 
 `https://polkadot.js.org/apps///?rpc=ws%3A%2F%2Flocalhost%3A9944#/explorer`
 
 Notice `fisherman.NewJobResults`
 
-### . Turn off node and gateway. Offchain worker will detect and change node status to `Investigate`, which means Node/GW is no longer part of Massbit network
+#### . Turn off node and gateway. Offchain worker will detect and change node status to `Investigate`, which means Node/GW is no longer part of Massbit network
 
 ```
 root@datnm:/massbit/test_runtime/43# docker rm gateway_43_eth_mainnet_grant-m2_2  -f
