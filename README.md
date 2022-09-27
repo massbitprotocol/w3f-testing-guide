@@ -34,6 +34,8 @@ ssh -L"9944:172.24.43.20:9944" [SERVER IP]
 `https://polkadot.js.org/apps///?rpc=ws%3A%2F%2Flocalhost%3A9944#/explorer`
 
 Notice `fisherman.NewJobResults`
+![image](https://user-images.githubusercontent.com/6365545/192491644-a897cff3-5198-474c-ab49-19f4bb4bca8f.png)
+
 
 #### . Turn off node and gateway. Offchain worker will detect and change node status to `Investigate`, which means Node/GW is no longer part of Massbit network
 
@@ -42,6 +44,12 @@ root@datnm:/massbit/test_runtime/43# docker rm gateway_43_eth_mainnet_grant-m2_2
 gateway_43_eth_mainnet_grant-m2_2
 root@datnm:/massbit/test_runtime/43# docker rm node_43_eth_mainnet_grant-m2_2  -f
 node_43_eth_mainnet_grant-m2_2
+```
+
+#### . Use sshutle to connect user's computer to docker network on server
+
+```
+sshuttle -r massbit@192.168.1.239 172.24.43.0/24 -vv
 ```
 
 #### . Create/Stake Project + dAPI and test dAPI
