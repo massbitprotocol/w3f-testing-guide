@@ -10,8 +10,7 @@ bash start_env.sh
 [Public IP of docker host] portal.massbitroute.net
 [Public IP of docker host] dapi.massbitroute.net
 [Public IP of docker host] chain.massbitroute.net
-
-
+[Public IP of docker host]  session.mbr.massbitroute.net
 ```
 
 #### . Spin up docker for Massbit node/gw
