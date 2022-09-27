@@ -7,6 +7,7 @@
     "interval": 1000,
     "type": "rpc",
     "http_method": "post",
+    "url_template": "https://{{provider.ip}}/",
     "provider_types": ["node"],
     "request_timeout": 5000,
     "headers": {
@@ -39,13 +40,14 @@
   },
   {
     "name": "LatestBlock",
-    "active": false,
+    "active": true,
     "phases": ["regular"],
     "blockchains": ["dot"],
     "repeat_number": 1000000000,
     "interval": 300000,
     "type": "rpc",
     "http_method": "post",
+    "url_template": "https://{{provider.ip}}/",
     "provider_types": ["node"],
     "request_timeout": 5000,
     "headers": {

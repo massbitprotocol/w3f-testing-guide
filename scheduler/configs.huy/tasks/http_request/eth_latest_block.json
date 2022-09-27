@@ -2,11 +2,12 @@
   {
     "name": "LatestBlock",
     "phases": ["verification"],
-    "blockchains": ["dot"],
+    "blockchains": ["eth"],
     "repeat_number": 0,
     "interval": 1000,
     "type": "rpc",
     "http_method": "post",
+    "url_template": "https://{{provider.ip}}/",
     "provider_types": ["node"],
     "request_timeout": 5000,
     "headers": {
@@ -16,15 +17,16 @@
     },
     "body": {
       "jsonrpc": "2.0",
-      "method": "chain_getBlock",
-      "params": [],
+      "method": "eth_getBlockByNumber",
+      "params": ["latest",true],
       "id": 1
     },
     "response" : {
       "response_type" : "json",
       "values" : {
-        "parent_hash": ["result", "block","header","parentHash"],
-        "number": ["result", "block","header","number"]
+        "hash": ["result", "hash"],
+        "number": ["result", "number"],
+        "timestamp": ["result", "timestamp"]
       }
     },
     "assignment": {
@@ -34,18 +36,19 @@
       "by_distance": false
     },
     "thresholds": {
-      "max_block_missing": 200
+      "late_duration":  1200
     }
   },
   {
     "name": "LatestBlock",
-    "active": false,
+    "active": true,
     "phases": ["regular"],
-    "blockchains": ["dot"],
+    "blockchains": ["eth"],
     "repeat_number": 1000000000,
     "interval": 300000,
     "type": "rpc",
     "http_method": "post",
+    "url_template": "https://{{provider.ip}}/",
     "provider_types": ["node"],
     "request_timeout": 5000,
     "headers": {
@@ -55,15 +58,16 @@
     },
     "body": {
       "jsonrpc": "2.0",
-      "method": "chain_getBlock",
-      "params": [],
+      "method": "eth_getBlockByNumber",
+      "params": ["latest",true],
       "id": 1
     },
     "response" : {
       "response_type" : "json",
       "values" : {
-        "parent_hash": ["result", "block","header","parentHash"],
-        "number": ["result", "block","header","number"]
+        "hash": ["result", "hash"],
+        "number": ["result", "number"],
+        "timestamp": ["result", "timestamp"]
       }
     },
     "assignment": {
@@ -72,8 +76,8 @@
       "nearby_only": true,
       "by_distance": false
     },
-    "thresholds": {
-      "max_block_missing": 200
+    "thresholds" : {
+      "late_duration":  1200
     }
   }
 ]

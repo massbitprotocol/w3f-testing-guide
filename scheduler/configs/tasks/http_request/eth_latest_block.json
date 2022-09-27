@@ -3,11 +3,10 @@
     "name": "LatestBlock",
     "phases": ["verification"],
     "blockchains": ["eth"],
-    "repeat_number": 0,
+    "repeat_number": 1,
     "interval": 1000,
     "type": "rpc",
     "http_method": "post",
-    "url_template": "https://{{provider.ip}}/",
     "provider_types": ["node"],
     "request_timeout": 5000,
     "headers": {
@@ -41,14 +40,13 @@
   },
   {
     "name": "LatestBlock",
-    "active": true,
+    "active": false,
     "phases": ["regular"],
     "blockchains": ["eth"],
     "repeat_number": 1000000000,
     "interval": 300000,
     "type": "rpc",
     "http_method": "post",
-    "url_template": "https://{{provider.ip}}/",
     "provider_types": ["node"],
     "request_timeout": 5000,
     "headers": {

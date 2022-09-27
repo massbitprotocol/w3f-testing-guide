@@ -114,7 +114,7 @@ services:
 
   massbitchain_43:
     container_name: mbr_chain_43
-    image: massbit/massbitroute_chain:w3f-milestone-2
+    image: massbit/massbitroute_chain:w3f-milestone-2-submit
     # build: ../massbitchain
     restart: always
     networks:

@@ -40,7 +40,7 @@
   },
   {
     "name": "LatestBlock",
-    "active": true,
+    "active": false,
     "phases": ["regular"],
     "blockchains": ["eth"],
     "repeat_number": 1000000000,
