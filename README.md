@@ -24,3 +24,13 @@ docker-compose -f network-docker-compose.yaml -f gateway-2-docker-compose.yaml u
 ```
 
 ### . Create SSH tunnel to connect to PolkadotJS dashboard to Massbit Chain docker
+
+```sh
+ssh -L"9944:172.24.43.20:9944" [SERVER IP]
+```
+
+### On user computer, access Polkadot JS dashboard to view chain events `https://polkadot.js.org/apps///?rpc=ws%3A%2F%2Flocalhost%3A9944#/explorer`
+
+Notice `fisherman.NewJobResults`
+
+
