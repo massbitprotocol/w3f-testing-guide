@@ -14,7 +14,13 @@ bash start_env.sh
 
 ```
 
-### . Spin up docker for Massbit node
+### . Spin up docker for Massbit node/gw
 ```
 docker-compose -f network-docker-compose.yaml -f node-docker-compose.yaml up -d 
+docker-compose -f network-docker-compose.yaml -f node-2-docker-compose.yaml up -d 
+
+docker-compose -f network-docker-compose.yaml -f gateway-docker-compose.yaml up -d 
+docker-compose -f network-docker-compose.yaml -f gateway-2-docker-compose.yaml up -d 
 ```
+
+### . Create SSH tunnel to connect to PolkadotJS dashboard to Massbit Chain docker
