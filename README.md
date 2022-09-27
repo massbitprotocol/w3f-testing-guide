@@ -45,7 +45,7 @@ root@datnm:/massbit/test_runtime/43# docker rm node_43_eth_mainnet_grant-m2_2  -
 node_43_eth_mainnet_grant-m2_2
 ```
 
-#### . Use sshutle to connect user's computer to docker network on server
+#### . Use sshutle to connect user's computer to docker network `172.24.43.0/24` on server
 
 ```
 sshuttle -r massbit@192.168.1.239 172.24.43.0/24 -vv
