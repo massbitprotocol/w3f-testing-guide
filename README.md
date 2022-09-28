@@ -81,6 +81,18 @@ sshuttle -r massbit@192.168.1.239 172.24.43.0/24 -vv
 
 In the web portal `http://dapi.massbitroute.net/projects`, create a new project, make sure the project is `staked`, then create a dAPI for the project
 
+![image](https://user-images.githubusercontent.com/6365545/192678344-48af44d8-c484-4d20-9c34-ba00eba2de47.png)
+
+#### 10. Click on the created dAPI to get the API URL
+
+![image](https://user-images.githubusercontent.com/6365545/192678477-163005b9-807f-4763-b2ef-ba1b8edd5a46.png)
+
+#### 11. Copy the URL and call the dAPI with the following command
+
+```sh
+./drain_session.sh [API URL]
+```
+
 ![image](https://user-images.githubusercontent.com/6365545/192676982-9a73bfcb-fd57-4863-836f-b76197ed303a.png)
 
 
