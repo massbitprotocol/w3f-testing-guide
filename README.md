@@ -87,7 +87,23 @@ In the web portal `http://dapi.massbitroute.net/projects`, create a new project,
 
 ![image](https://user-images.githubusercontent.com/6365545/192678477-163005b9-807f-4763-b2ef-ba1b8edd5a46.png)
 
-#### 11. Copy the URL and call the dAPI with the following command
+#### 11. On the VM host, perform nslookup for the dAPI host portion. 
+
+* Due to `sshutle` does not support UDP, we will not be able to do `nslookup` from client computer through `gateway manager` running in the docker environment
+
+```sh
+# resolved the IP of the dAPI host 
+
+nslookup [dAPI host portion] 172.24.43.2
+```
+
+#### 12. On the user's computer edit `/etc/hosts` files to include an entry for the create dAPI
+
+```sh
+[resolved IP] [API id].eth-mainnet.massbitroute.net
+```
+
+#### 13. Copy the URL and call the dAPI with the following command
 
 ```sh
 ./drain_session.sh [API URL]
