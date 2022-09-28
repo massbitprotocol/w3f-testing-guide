@@ -118,3 +118,33 @@ nslookup [dAPI host portion] 172.24.43.2
 ![image](https://user-images.githubusercontent.com/6365545/192683264-41527e6c-6661-45a5-aa65-efe20c1cafdd.png)
 
 
+
+## Unit tests
+
+### Massbit Core API
+
+```sh
+git clone https://github.com/massbitprotocol/massbitroute.git -b shamu
+cd massbitroute
+./scripts/run _install_test
+./scripts/run _run_test
+```
+
+### Massbit Chain
+
+```sh
+git clone https://github.com/massbitprotocol/massbitchain.git -b wf-grant
+cd massbitchain
+cargo test
+```
+
+### Massbit Fisherman
+
+```sh
+git clone https://github.com/massbitprotocol/massbitroute_fisherman.git -b web3-grant
+cd massbitroute_fisherman
+cargo install cargo-tarpaulin
+sudo apt-get install libpq-dev
+cargo tarpaulin -v --out Html
+```
+
