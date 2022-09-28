@@ -109,7 +109,12 @@ nslookup [dAPI host portion] 172.24.43.2
 ./drain_session.sh [API URL]
 ```
 
+* Once the API quota reached 0, the API will return error code `404`. The portal also show the API status as in active
+
 ![image](https://user-images.githubusercontent.com/6365545/192676982-9a73bfcb-fd57-4863-836f-b76197ed303a.png)
 
+The charts also display the request and bandwidth count when we call the API
+
+![image](https://user-images.githubusercontent.com/6365545/192683264-41527e6c-6661-45a5-aa65-efe20c1cafdd.png)
 
 
