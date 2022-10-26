@@ -17,8 +17,8 @@ services:
       - ./fisherman/configs:/usr/local/bin/configs
       - ./fisherman/.env_fisherman:/usr/local/bin/.env_fisherman
       - ./fisherman/worker01/log:/var/log/fisherman
-    env_file:
-      - /home/massbit/massbit/massbitroute_test/end2end/.secret
+        #env_file:
+        #- /home/massbit/massbit/massbitroute_test/end2end/.secret
     environment:
       - BENCHMARK_WRK_PATH=/usr/local/bin/benchmark
       - COMMON_CONFIG_FILE=/usr/local/bin/configs/common.json
@@ -73,8 +73,8 @@ services:
       - ./fisherman/configs:/usr/local/bin/configs
       - ./fisherman/.env_fisherman:/usr/local/bin/.env_fisherman
       - ./fisherman/worker02/log:/var/log/fisherman
-    env_file:
-      - /home/massbit/massbit/massbitroute_test/end2end/.secret
+        #env_file:
+        #- /home/massbit/massbit/massbitroute_test/end2end/.secret
     environment:
       - BENCHMARK_WRK_PATH=/usr/local/bin/benchmark
       - COMMON_CONFIG_FILE=/usr/local/bin/configs/common.json

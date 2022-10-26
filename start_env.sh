@@ -1,3 +1,7 @@
+#!/bin/bash
+
+apt install nginx -y
+
 network_number=43
 docker network create -d bridge --gateway "172.24.$network_number.1" --subnet "172.24.$network_number.0/24"  mbr_test_network_$network_number
 
@@ -21,5 +25,6 @@ sleep 10
 
 docker restart mbr_portal_api_43
 
-
+ln -s $PWD/public-proxy.conf /etc/nginx/sites-enabled/public-proxy.conf
+nginx -s reload
 # docker-compose -f network.yaml -f gateway_eth_mainnet.yaml -f node_eth_mainnet.yaml  up -d 
