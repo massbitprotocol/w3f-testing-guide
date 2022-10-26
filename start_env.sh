@@ -21,6 +21,5 @@ sleep 10
 
 docker restart mbr_portal_api_43
 
-cd stat/docker-compose 
 
-docker-compose -f network.yaml -f gateway_eth_mainnet.yaml -f node_eth_mainnet.yaml  up -d 
+# docker-compose -f network.yaml -f gateway_eth_mainnet.yaml -f node_eth_mainnet.yaml  up -d 
