@@ -152,7 +152,7 @@ services:
       - MBR_ENV=v0.1.15
       - MKAGENT_BRANCH=shamu
       - GIT_PRIVATE_BRANCH=shamu
-      - GIT_PRIVATE_READ_URL=http://massbit:REN4jRRO0G1BEsU8v3qyTnpShMzQc3ml@git.massbitroute.net
+      - GIT_PRIVATE_READ_URL=http://massbit:5rlWtM7P_YH-IsLR6g6uNOmie3D54WAu@git.massbitroute.net
     extra_hosts:
       - "hostmaster.massbitroute.net:172.24.43.254"
       - "ns1.massbitroute.net:172.24.43.254"
@@ -198,7 +198,7 @@ services:
       - MBR_ENV=v0.1.0
       - MKAGENT_BRANCH=shamu
       - GIT_PRIVATE_BRANCH=shamu
-      - GIT_PRIVATE_READ_URL=http://massbit:REN4jRRO0G1BEsU8v3qyTnpShMzQc3ml@git.massbitroute.net
+      - GIT_PRIVATE_READ_URL=http://massbit:5rlWtM7P_YH-IsLR6g6uNOmie3D54WAu@git.massbitroute.net
 
 
   gwman_43:
@@ -226,7 +226,7 @@ services:
       - MBR_ENV=v0.1.8
       - MKAGENT_BRANCH=shamu
       - GIT_PRIVATE_BRANCH=shamu
-      - GIT_PRIVATE_READ_URL=http://massbit:REN4jRRO0G1BEsU8v3qyTnpShMzQc3ml@git.massbitroute.net
+      - GIT_PRIVATE_READ_URL=http://massbit:5rlWtM7P_YH-IsLR6g6uNOmie3D54WAu@git.massbitroute.net
 
     extra_hosts:
       - "hostmaster.massbitroute.net:172.24.43.254"
@@ -241,6 +241,90 @@ services:
       - "dapi.massbitroute.net:172.24.43.254"
       - "scheduler.fisherman.massbitroute.net:172.24.43.254"
       - "api.ipapi.com:172.24.43.254"
+      - "staking.massbitroute.net:172.24.43.254"
+      - "git.massbitroute.net:172.24.43.5"
+
+  stat_gateway_eth_mainnet_43:
+    privileged: true
+    networks:
+      mbr_test_network_43:
+        ipv4_address: "172.24.43.24"
+    restart: unless-stopped
+    image: massbit/massbitroute_stat:v0.1.8
+    command: "-n"
+    container_name: mbr_stat_gateway_eth_mainnet_43
+    environment:
+      - STAT_TYPE=gateway
+      - STAT_NETWORK=mainnet
+      - STAT_BLOCKCHAIN=eth
+      - MBR_ENV=v0.1.8
+      - MKAGENT_BRANCH=shamu
+      - GIT_PRIVATE_BRANCH=shamu
+      - PORTAL_URL=http://portal.massbitroute.net
+      - GIT_PUBLIC_URL="https://github.com"
+      - GIT_PRIVATE_READ_URL=http://massbit:5rlWtM7P_YH-IsLR6g6uNOmie3D54WAu@git.massbitroute.net
+
+    extra_hosts:
+      - "hostmaster.massbitroute.net:172.24.43.254"
+      - "ns1.massbitroute.net:172.24.43.254"
+      - "ns2.massbitroute.net:172.24.43.254"
+      - "api.massbitroute.net:172.24.43.254"
+      - "stat.mbr.massbitroute.net:172.24.43.254"
+      - "monitor.mbr.massbitroute.net:172.24.43.254"
+      - "portal.massbitroute.net:172.24.43.254"
+      - "admin-api.massbitroute.net:172.24.43.254"
+      - "dapi.massbitroute.net:172.24.43.254"
+      - "scheduler.fisherman.massbitroute.net:172.24.43.254"
+      - "gateway-dot-mainnet.monitor.mbr.massbitroute.net:172.24.43.254"
+      - "gateway-eth-mainnet.monitor.mbr.massbitroute.net:172.24.43.254"
+      - "node-eth-mainnet.monitor.mbr.massbitroute.net:172.24.43.254"
+      - "node-dot-mainnet.monitor.mbr.massbitroute.net:172.24.43.254"
+      - "node-eth-mainnet.stat.mbr.massbitroute.net:172.24.43.254"
+      - "node-dot-mainnet.stat.mbr.massbitroute.net:172.24.43.254"
+      - "gateway-eth-mainnet.stat.mbr.massbitroute.net:172.24.43.254"
+      - "gateway-dot-mainnet.stat.mbr.massbitroute.net:172.24.43.254"
+      - "staking.massbitroute.net:172.24.43.254"
+      - "git.massbitroute.net:172.24.43.5"
+
+  stat_node_eth_mainnet_43:
+    privileged: true
+    networks:
+      mbr_test_network_43:
+        ipv4_address: "172.24.43.23"
+    restart: unless-stopped
+    image: massbit/massbitroute_stat:v0.1.8
+    command: "-n"
+    container_name: mbr_stat_node_eth_mainnet_43
+    environment:
+      - STAT_TYPE=node
+      - STAT_NETWORK=mainnet
+      - STAT_BLOCKCHAIN=eth
+      - MBR_ENV=v0.1.8
+      - MKAGENT_BRANCH=shamu
+      - GIT_PRIVATE_BRANCH=shamu
+      - PORTAL_URL=http://portal.massbitroute.net
+      - GIT_PUBLIC_URL="https://github.com"
+      - GIT_PRIVATE_READ_URL=http://massbit:5rlWtM7P_YH-IsLR6g6uNOmie3D54WAu@git.massbitroute.net
+
+    extra_hosts:
+      - "hostmaster.massbitroute.net:172.24.43.254"
+      - "ns1.massbitroute.net:172.24.43.254"
+      - "ns2.massbitroute.net:172.24.43.254"
+      - "api.massbitroute.net:172.24.43.254"
+      - "stat.mbr.massbitroute.net:172.24.43.254"
+      - "monitor.mbr.massbitroute.net:172.24.43.254"
+      - "portal.massbitroute.net:172.24.43.254"
+      - "admin-api.massbitroute.net:172.24.43.254"
+      - "dapi.massbitroute.net:172.24.43.254"
+      - "scheduler.fisherman.massbitroute.net:172.24.43.254"
+      - "gateway-dot-mainnet.monitor.mbr.massbitroute.net:172.24.43.254"
+      - "gateway-eth-mainnet.monitor.mbr.massbitroute.net:172.24.43.254"
+      - "node-eth-mainnet.monitor.mbr.massbitroute.net:172.24.43.254"
+      - "node-dot-mainnet.monitor.mbr.massbitroute.net:172.24.43.254"
+      - "node-eth-mainnet.stat.mbr.massbitroute.net:172.24.43.254"
+      - "node-dot-mainnet.stat.mbr.massbitroute.net:172.24.43.254"
+      - "gateway-eth-mainnet.stat.mbr.massbitroute.net:172.24.43.254"
+      - "gateway-dot-mainnet.stat.mbr.massbitroute.net:172.24.43.254"
       - "staking.massbitroute.net:172.24.43.254"
       - "git.massbitroute.net:172.24.43.5"
 
