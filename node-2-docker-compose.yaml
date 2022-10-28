@@ -28,7 +28,7 @@ services:
       - MBR_ENV=v0.1.8
       - DOMAIN=massbitroute.net
       - PORTAL_URL=http://portal.massbitroute.net
-      - INSTALL_CMD=http://portal.massbitroute.net/api/v1/node_install?id=2de53819-e2eb-4536-8655-168c7f819c53&user_id=f0ae8444-a6c8-4f40-b944-eff83d923efe&blockchain=eth&network=mainnet&zone=AS&data_url=http://34.81.232.186:8545&app_key=nBjYe8384xOOMaOCHTpubw&portal_url=http://portal.massbitroute.net&env=keiko
+      - INSTALL_CMD=[[URL]]
     extra_hosts:
       - "hostmaster.massbitroute.net:172.24.43.254"
       - "ns1.massbitroute.net:172.24.43.254"
