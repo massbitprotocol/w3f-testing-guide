@@ -148,3 +148,22 @@ sudo apt-get install libpq-dev
 cargo tarpaulin -v --out Html
 ```
 
+### Massbit Session
+
+```sh
+ cd /massbit/massbitroute/app/src/sites/services/session/
+ git fetch --all --tags
+ git checkout v0.1.11
+ bash ./scripts/run _install_test
+ bash ./scripts/run _run_test
+```
+
+### Massbit Stat
+
+```sh
+cd /massbit/massbitroute/app/src/sites/services/stat/
+git fetch --all --tags
+git checkout v0.1.19
+bash ./scripts/run _install_test
+bash ./scripts/run _run_test
+```
