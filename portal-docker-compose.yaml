@@ -178,11 +178,9 @@ services:
 
   mbr_web_43:
     container_name: mbr_web_43
-    image: massbit/massbitroute_web:w3f-milestone-2
+    image: massbit/massbitroute_web:w3f-milestone-2-test
     # build: ../mbr-app
     restart: always
-    depends_on:
-      - "mbr_portal_api_43"
     networks:
       mbr_test_network_43:
         ipv4_address: "172.24.43.11"
