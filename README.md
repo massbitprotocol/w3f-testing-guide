@@ -50,18 +50,17 @@ docker-compose -f network-docker-compose.yaml -f gateway-2-docker-compose.yaml u
 #### 5. Turn off node and gateway. Offchain worker will detect and change node status to `Investigate`, which means Node/GW is no longer part of Massbit network
 
 ```
-root@datnm:/massbit/test_runtime/43# docker rm gateway_43_eth_mainnet_grant-m2_2  -f
-gateway_43_eth_mainnet_grant-m2_2
-root@datnm:/massbit/test_runtime/43# docker rm node_43_eth_mainnet_grant-m2_2  -f
-node_43_eth_mainnet_grant-m2_2
+docker rm gateway_43_eth_mainnet_grant-m2_2  -f gateway_43_eth_mainnet_grant-m2_2
+
+docker rm node_43_eth_mainnet_grant-m2_2  -f node_43_eth_mainnet_grant-m2_2
 ```
-#### 6. Create SSH tunnel to connect to PolkadotJS dashboard to Massbit Chain docker
+#### 6. Create SSH tunnel to connect to view Massbit chain events on PolkadotJS dashboard 
 
 ```sh
 ssh -L"9944:172.24.43.20:9944" [SERVER IP]
 ```
 
-#### 7. On user computer, access Polkadot JS dashboard to view chain events 
+On user computer, access Polkadot JS dashboard to view chain events 
 
 `https://polkadot.js.org/apps///?rpc=ws%3A%2F%2Flocalhost%3A9944#/explorer`
 
@@ -69,13 +68,24 @@ Notice `fisherman.NewJobResults`
 ![image](https://user-images.githubusercontent.com/6365545/192491644-a897cff3-5198-474c-ab49-19f4bb4bca8f.png)
 
 
-#### 8. Use sshutle to connect user's computer to docker network `172.24.43.0/24` on server
+#### 8. Use sshutle to connect user/testing client's computer to docker network `172.24.43.0/24` on server. This will forward all dns request to the Docker host, so we can perform DNS lookup for dAPI URL with Massbit Gateway Manager.
 
 ```
+### Run this this on your laptop/computer
 apt-get install sshuttle
 
-sshuttle -r massbit@192.168.1.239 172.24.43.0/24 -vv
+sshuttle -r massbit@192.168.1.239 172.24.43.0/24 -vv --dns
 ```
+*** ATTENTION: After running sshuttle, internet connectivity will be lost due to all DNS requests are directed to Gateway manager on the Docker host
+
+
+On the Docker host, make sure the DNS server is pointed to the Gateway Manager in `/etc/resolv.conf` file
+
+```
+nameserver 172.24.88.2
+```
+
+
 
 #### 9. Create/Stake Project + dAPI and test dAPI
 
@@ -89,7 +99,6 @@ In the web portal `http://dapi.massbitroute.net/projects`, create a new project,
 
 #### 11. On the VM host, perform nslookup for the dAPI host portion. 
 
-* Due to `sshutle` does not support UDP, we will not be able to do `nslookup` from client computer through `gateway manager` running in the docker environment
 
 ```sh
 # resolved the IP of the dAPI host 
