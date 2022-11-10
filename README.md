@@ -54,13 +54,13 @@ docker rm gateway_43_eth_mainnet_grant-m2_2  -f gateway_43_eth_mainnet_grant-m2_
 
 docker rm node_43_eth_mainnet_grant-m2_2  -f node_43_eth_mainnet_grant-m2_2
 ```
-#### 6. Create SSH tunnel to connect to PolkadotJS dashboard to Massbit Chain docker
+#### 6. Create SSH tunnel to connect to view Massbit chain events on PolkadotJS dashboard 
 
 ```sh
 ssh -L"9944:172.24.43.20:9944" [SERVER IP]
 ```
 
-#### 7. On user computer, access Polkadot JS dashboard to view chain events 
+On user computer, access Polkadot JS dashboard to view chain events 
 
 `https://polkadot.js.org/apps///?rpc=ws%3A%2F%2Flocalhost%3A9944#/explorer`
 
