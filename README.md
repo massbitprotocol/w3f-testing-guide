@@ -50,10 +50,9 @@ docker-compose -f network-docker-compose.yaml -f gateway-2-docker-compose.yaml u
 #### 5. Turn off node and gateway. Offchain worker will detect and change node status to `Investigate`, which means Node/GW is no longer part of Massbit network
 
 ```
-root@datnm:/massbit/test_runtime/43# docker rm gateway_43_eth_mainnet_grant-m2_2  -f
-gateway_43_eth_mainnet_grant-m2_2
-root@datnm:/massbit/test_runtime/43# docker rm node_43_eth_mainnet_grant-m2_2  -f
-node_43_eth_mainnet_grant-m2_2
+docker rm gateway_43_eth_mainnet_grant-m2_2  -f gateway_43_eth_mainnet_grant-m2_2
+
+docker rm node_43_eth_mainnet_grant-m2_2  -f node_43_eth_mainnet_grant-m2_2
 ```
 #### 6. Create SSH tunnel to connect to PolkadotJS dashboard to Massbit Chain docker
 
