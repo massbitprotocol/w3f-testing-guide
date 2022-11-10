@@ -69,13 +69,24 @@ Notice `fisherman.NewJobResults`
 ![image](https://user-images.githubusercontent.com/6365545/192491644-a897cff3-5198-474c-ab49-19f4bb4bca8f.png)
 
 
-#### 8. Use sshutle to connect user's computer to docker network `172.24.43.0/24` on server
+#### 8. Use sshutle to connect user/testing client's computer to docker network `172.24.43.0/24` on server. This will forward all dns request to the Docker host, so we can perform DNS lookup for dAPI URL with Massbit Gateway Manager.
 
 ```
+### Run this this on your laptop/computer
 apt-get install sshuttle
 
-sshuttle -r massbit@192.168.1.239 172.24.43.0/24 -vv
+sshuttle -r massbit@192.168.1.239 172.24.43.0/24 -vv --dns
 ```
+*** ATTENTION: After running sshuttle, internet connectivity will be lost due to all DNS requests are directed to Gateway manager on the Docker host
+
+
+On the Docker host, make sure the DNS server is pointed to the Gateway Manager in `/etc/resolv.conf` file
+
+```
+nameserver 172.24.88.2
+```
+
+
 
 #### 9. Create/Stake Project + dAPI and test dAPI
 
@@ -89,7 +100,6 @@ In the web portal `http://dapi.massbitroute.net/projects`, create a new project,
 
 #### 11. On the VM host, perform nslookup for the dAPI host portion. 
 
-* Due to `sshutle` does not support UDP, we will not be able to do `nslookup` from client computer through `gateway manager` running in the docker environment
 
 ```sh
 # resolved the IP of the dAPI host 
